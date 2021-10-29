@@ -1,0 +1,230 @@
+.container {
+    padding: 20px 70px;
+    color: #fff;
+
+}
+
+.current-info {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .date-container {
+        font-weight: 100;
+
+        .time {
+            font-size: 70px;
+            font-weight: 100;
+
+            span {
+                font-size: 30px;
+                margin-left: 5px;
+            }
+        }
+
+        .date {
+            font-size: 32px;
+
+        }
+    }
+
+    .others {
+        display: flex;
+        flex-direction: column;
+        background: rgba(24, 24, 27, 0.6);
+        padding: 20px;
+        border-radius: 10px;
+        margin: 10px 0;
+        border: 1px solid #fff;
+
+        .weather-item {
+            display: flex;
+            justify-content: space-between;
+        }
+
+    }
+
+    .place {
+        text-align: end;
+
+        .time-zone {
+            font-size: 32px;
+            font-weight: 100;
+        }
+
+        .country {
+            font-size: 12px;
+            font-weight: 700;
+
+        }
+
+    }
+
+}
+
+.future-forecast {
+    background: rgba(24, 24, 27, 0.6);
+    padding: 25px;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    color: #fff;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+
+    .today {
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+        }
+        display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 15px;
+
+        .day {
+            padding: 5px 15px;
+            background: #3c3c44;
+            border-radius: 50px;
+            text-align: center;
+        }
+
+        .temp {
+            font-size: 18px;
+            padding-top: 15px;
+            text-align: center;
+        }
+
+    }
+
+    .weather-forecast {
+        display: flex;
+
+        .weather-forecast-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 15px;
+            transition: .2s;
+        
+            .day {
+                padding: 5px 15px;
+                background: #3c3c44;
+                border-radius: 50px;
+                text-align: center;
+            }
+
+            .temp {
+                font-weight: 200;
+            }
+
+            &:hover {
+                transform: scale(1.1);
+            }
+
+        }
+
+
+    }
+}
+
+.form {
+    // font-family: 'Poppins';
+    position: absolute;
+    top: 15%;
+    right: 5%;
+    display: flex;
+    gap: 5px;
+
+    .inputCity {
+        padding: 10px 20px 10px 10px;
+        outline: none;
+        font-size: 18px;
+        border: none;
+        border-radius: 7px;
+
+    }
+
+    .sendInput {
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        padding: 0 15px;
+
+        i {
+            color:rgba(24, 24, 27, 0.6);
+        }
+
+    }
+
+}
+
+@media (max-width: 730px) {
+    .future-forecast {
+        justify-content: start;
+        align-items: none;
+        overflow-x: scroll;
+
+        .today {
+
+            .temp {
+                font-size: 23px;
+            }
+        }
+
+        
+    }
+
+    .current-info {
+        .date-container {
+            .time {
+                font-size: 50px;
+                
+
+                span {
+                    font-size: 20px;
+                    
+                }
+            }
+
+            .date {
+                font-size: 20px;
+
+            }
+
+            .others {
+                padding: 12px;
+
+                .weather-item {
+                    font-size: 14px;
+                }
+            }
+
+        }
+
+        .place {
+            text-align: end;
+            margin-top: 15px;
+    
+            .time-zone {
+                font-size: 20px;
+            }
+    
+        }
+    }
+    
+    
+
+
+}
