@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="scripts/script.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment-with-locales.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/css/style.css">
+    <title>Daily Weather</title>
+</head>
+<body>
+    
+    <main class="container">
+        <div class="current-info">
+            <div class="date-container">
+                <div class="time"></div>
+                <div class="date"></div>
+                <div class="others"></div>
+            </div>
+            <div class="place">
+                <div class="time-zone"></div>
+                <div class="country"></div>
+            </div>
+        </div>
+    </main>
+
+    <div class="form">
+
+        <input class="inputCity" type="text" placeholder="São Paulo">
+        <button class="sendInput"><i class="ri-send-plane-2-fill"></i></button>
+
+    </div>
+
+    <footer class="future-forecast">
+        <div class="today">
+            <div class="content"></div>
+        </div>
+        <div class="weather-forecast">
+        </div>
+    </footer>
+
+
+
+</body>
+</html>
