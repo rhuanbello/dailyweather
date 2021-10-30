@@ -69,6 +69,8 @@ const initWeather = () => {
         sendInput.addEventListener('click', () => {
             let cityName = userInput.value
 
+            changeBackgroundByWeather(cityName)
+
                 fetch('https://rhuanbello-citylist.s3.sa-east-1.amazonaws.com/cities.json')
                 .then(response => response.json())
                 .then(list => {
@@ -80,13 +82,10 @@ const initWeather = () => {
                         if (citie.name == cityName) {
 
                             let {lat, lon} = citie.coord
-
-                            console.log(citie)
                             
                             fetch(`${BASE_URL}lat=${lat}&lon=${lon}&exclude=hourly,minutely&units=metric&appid=${API_KEY}`)
                             .then(response => response.json()).then(data => {
                                 showWeatherData(data)
-                                console.log(data)
                                 timeZone.innerHTML = citie.name
                             })
                         }
@@ -101,24 +100,30 @@ const initWeather = () => {
 
     searchCitieWeather()
 
-    const changeBackgroundByWeather = () => {
-        const API_UNP = 'zybzCr74o7PLZJ0bezMjlG1pEsH5Q_Vm4dqNKLBe254'
-    
-        fetch(`https://api.unplash.com/search/photos?query=clouds&client_id=${API_UNP}`)
+    const changeBackgroundByWeather = (query) => {
+        const CLIENT_ID = 'zybzCr74o7PLZJ0bezMjlG1pEsH5Q_Vm4dqNKLBe254'
+        const keyword = `${query}`
+
+        fetch(`https://api.unsplash.com/search/photos?query=${keyword}&order_by=relevant&page=1&orientation=landscape&client_id=${CLIENT_ID}`)
         .then(response => response.json()).then(data => {
-            console.log(data)
-
+            let imgUrl = data.results[0].urls.regular
+            changeBackground(imgUrl)
         })
-
 
     }
 
-    changeBackgroundByWeather()
+    const changeBackground = (imgUrl) => {
+        document.body.style.background = `url('${imgUrl}') no-repeat`;
+        document.body.style.backgroundSize = "cover";
+
+    }
 
     const showWeatherData = (data) => {
         let {humidity, pressure, sunrise, sunset, wind_speed, weather} = data.current 
 
-        console.log(weather[0].description)
+        // console.log(data)
+        // const query = weather[0].main
+        // changeBackgroundByWeather(query)
 
         timeZone.innerHTML = data.timezone;
         country.innerHTML = data.lat + 'N ' + data.lon+'E'
@@ -144,9 +149,7 @@ const initWeather = () => {
            <p>Pôr-do-sol</p>
            <p>${window.moment(sunset * 1000).format('HH:mm')}</p>
         </div>`;
-
-        // 
-
+        
         let otherDayForecast = '';
 
         data.daily.forEach((item, index) => {
