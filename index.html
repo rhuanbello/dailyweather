@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer type="module" src="scripts/script.js"></script>
+    <script defer src="scripts/main.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment-with-locales.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="styles/css/style.css">
@@ -37,15 +38,21 @@
             <div class="search-container">
 
                 <header class="search-options">
-                    <a href="">Definir Cidade</a>
-                    <a href="">Fazer Pesquisa</a>
+                    <a class="btn-location change">Definir Cidade</a>
+                    <span>|</span>
+                    <a class="btn-search change active">Fazer Pesquisa</a>
                 </header>
 
-                <div class="search-bar">
-                    <input class="input-location" type="text" placeholder="Localização...">
+                <form class="search-bar">
+                    <input class="input-location hidden" type="text" placeholder="Localização...">
                     <input class="input-search" type="text" placeholder="Fazer uma pesquisa...">
-                    <img src="assets/icons/search.svg" alt="" class="search-icon">
-                </div>
+                    <a href="" class="search-btn term">
+                        <img src="assets/icons/search.svg" alt="" class="search-icon">
+                    </a>
+                    <a class="search-btn location hidden">
+                        <img src="assets/icons/search.svg" alt="" class="search-icon">
+                    </a>
+                </form>
 
             </div>
 
