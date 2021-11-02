@@ -1,0 +1,74 @@
+.main-loading {
+    position: relative;
+    height: 100%;
+    background: url('../../assets/loading-background.jpg') center center no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: none;
+
+    &::after {
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        background: rgba(0, 0, 0, .85);
+        backdrop-filter: blur(1.5rem);
+
+    }
+
+    & > * {
+        position: relative;
+        z-index: 2;
+    }
+
+    section {
+        display: flex;
+        margin-top: auto;
+        flex-direction: column;
+        gap: $gutter / 2;
+        align-items: center;
+
+        progress {
+            width: 100%;
+            height: .7rem;
+            border-radius: 2.5rem;
+            overflow: hidden;
+        }
+        
+        ::-webkit-progress-bar{
+            background-color: $light-color;
+        
+        }
+        
+        ::-webkit-progress-value{
+            background-color: $primary-color;
+        }
+
+    }
+
+    footer {
+        font-family: 'Overpass', sans-serif;
+        font-weight: 900;
+        font-size: 1.2rem;
+        margin: auto 2rem 2rem auto;
+
+        a {
+            text-decoration: none;
+            color: $light-color;
+
+            span {
+                color: $primary-color;
+            }
+        }
+        
+
+    }
+
+}
+
