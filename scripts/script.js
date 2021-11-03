@@ -1,6 +1,5 @@
 import {Dom} from "./modules-dom.js"
 
-
 const loadingScreen = () => {
     const progressBar = new Dom('progress')
     const loadingPage = new Dom('.main-loading')
@@ -23,7 +22,7 @@ const loadingScreen = () => {
     const fillBar = () => {
         if (progressBarValue < 101){
             mainHome.addClass('hidden')
-            animationBar(40, true)
+            animationBar(20, true)
         } else {
             loadingPage.addClass('hidden')
             mainHome.removeClass('hidden')
