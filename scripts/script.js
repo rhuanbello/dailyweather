@@ -22,12 +22,11 @@ const loadingScreen = () => {
 
     const fillBar = () => {
         if (progressBarValue < 101){
-            // mainHome.addClass('hidden')
+            mainHome.addClass('hidden')
             animationBar(40, true)
         } else {
             loadingPage.addClass('hidden')
             mainHome.removeClass('hidden')
-
 
         }
 

@@ -26,9 +26,8 @@
 
     </main>
 
-    <main class="main-home">
+    <main class="main-home hidden">
 
-        
         <section class="section-search">
 
             <figure class="logo-container">
@@ -56,53 +55,28 @@
 
             </div>
 
-
         </section>
 
         <footer class="footer-home">
 
             <div class="weather-forecast">
 
-                <p class="weather-temperature">27°</p>
-                
+                <p class="weather-temperature"></p>
                 <div class="weather-description">
-
-                    <p class="city-name">Rio de Janeiro</p>
-                    <p class="date-container">
-                        <span class="time">12:53</span>
-                        <span>-</span>
-                        <span class="date">Segunda, 01 Nov 21</span>
-                    </p>
-
-                    <div class="weather-details">
-
-                        <div class="wind container">
-                            <img src="assets/icons/wind-speed.svg" alt="wind-speed">
-                            <span class="wind-speed">5 mh/s</span>
+                    <div class="container">
+                        <div class="content">
+                            <p class="city-name"></p>
+                            <p class="date-container">
+                                <span class="time"></span>
+                                <span>-</span>
+                                <span class="date"></span>
+                            </p>
                         </div>
-                        <div class="humidity container">
-                            <img src="assets/icons/humidity.svg" alt="humidity">
-                            <span class="humidity">80%</span>
+                        <div class="icon">
                         </div>
-                        <div class="temperature container">
-                            <img src="assets/icons/weather.svg" alt="weather">
-                            <span class="temperature">Cloudy</span>
-                        </div>
-                        <div class="max-temp container">
-                            <img src="assets/icons/max-temp.svg" alt="max-temp">
-                            <span class="max-temp">29°</span>
-                        </div>
-                        <div class="min-temp container">
-                            <img src="assets/icons/min-temp.svg" alt="min-temp">
-                            <span class="min-temp">25°</span>
-                        </div>
-
                     </div>
-
-                </div>
-
-                <div class="weather-icon">
-                    <img src="assets/icons/weather.jpg" alt="">
+                    <div class="weather-details">
+                    </div>
                 </div>
 
             </div>
@@ -112,10 +86,18 @@
             </div>
 
             <div class="social-media">
-                <img src="assets/icons/youtube.svg" alt="youtube">
-                <img src="assets/icons/twitter.svg" alt="twitter">
-                <img src="assets/icons/facebook.svg" alt="facebook">
-                <img src="assets/icons/instagram.svg" alt="instagram">
+                <a href="https://www.youtube.com/" target="_blank">
+                    <img src="assets/icons/youtube.png" alt="youtube">
+                </a>
+                <a href="https://twitter.com/home" target="_blank">
+                    <img src="assets/icons/twitter.png" alt="twitter">
+                </a>
+                <a href="https://www.facebook.com/" target="_blank">
+                    <img src="assets/icons/facebook.png" alt="facebook">
+                </a>
+                <a href="https://www.instagram.com/" target="_blank">
+                    <img src="assets/icons/instagram.png" alt="instagram">
+                </a>
             </div>
 
         </footer>
@@ -123,53 +105,19 @@
         <aside class="aside-forecast hidden">
 
             <header>
-                <img src="assets/icons/" alt="">
-                <!-- <marquee behavior="" direction=""></marquee> -->
-
+                <img src="assets/icons/alert-triangle.svg" alt="">
+                <marquee behavior="" direction="left">
+                    <p><span>Instituto Nacional de Meteorologia</span>INMET publica aviso iniciando em: 02/11/2021 10:10. Chuva entre 20 e 30 mm/h ou até 50 mm/dia, ventos intensos (40-60 km/h). Baixo risco de corte de energia elétrica, queda de galhos de árvores, alagamentos e de descargas elétricas.</p>
+                </marquee>
             </header>
 
-            <section>
-
-                <div class="box">
-                    <p>Hoje, 01 de Nov</p>
-                    <img src="assets/icons/weather.jpg" alt="">
-                    <p>27°</p>
-                </div>
-                <div class="box">
-                    <p>Hoje, 01 de Nov</p>
-                    <img src="assets/icons/weather.jpg" alt="">
-                    <p>27°</p>
-                </div>
-                <div class="box">
-                    <p>Hoje, 01 de Nov</p>
-                    <img src="assets/icons/weather.jpg" alt="">
-                    <p>27°</p>
-                </div>
-                <div class="box">
-                    <p>Hoje, 01 de Nov</p>
-                    <img src="assets/icons/weather.jpg" alt="">
-                    <p>27°</p>
-                </div>
-                <div class="box">
-                    <p>Hoje, 01 de Nov</p>
-                    <img src="assets/icons/weather.jpg" alt="">
-                    <p>27°</p>
-                </div>
-                <div class="box">
-                    <p>Hoje, 01 de Nov</p>
-                    <img src="assets/icons/weather.jpg" alt="">
-                    <p>27°</p>
-                </div>
-                <div class="box">
-                    <p>Hoje, 01 de Nov</p>
-                    <img src="assets/icons/weather.jpg" alt="">
-                    <p>27°</p>
-                </div>
-
+            <section class="weatherForecast">
             </section>
 
             <footer>
-                <img src="assets/icons/arrow-up.svg" alt="">
+                <div class="close-aside">
+                    <img src="assets/icons/arrow-down.svg" alt="" class="">
+                </div>
             </footer>
 
         </aside>

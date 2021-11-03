@@ -1,0 +1,54 @@
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+
+    }
+
+    to {
+        opacity: 1;
+    }
+    
+}
+
+@keyframes fadeLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-10rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0rem);
+
+    }
+    
+}
+
+@keyframes fadeBottom {
+    from {
+        opacity: 0;
+        transform: translateY(50rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0rem);
+
+    }
+    
+}
+
+@keyframes fadeTop {
+    from {
+        opacity: 1;
+        transform: translateY(0rem);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(50rem);
+        display: none;
+
+    }
+    
+}
