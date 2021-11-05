@@ -13,12 +13,26 @@
 @keyframes fadeLeft {
     from {
         opacity: 0;
-        transform: translateX(-10rem);
+        transform: translateX(-6rem);
     }
 
     to {
         opacity: 1;
         transform: translateX(0rem);
+
+    }
+    
+}
+
+@keyframes fadeRight {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(-6rem);
 
     }
     

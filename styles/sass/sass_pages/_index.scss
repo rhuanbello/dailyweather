@@ -5,6 +5,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    transition: background-image 2s ease-in-out;
 
     &::after {
         content: '';
@@ -97,7 +98,27 @@
                 cursor: pointer;
 
             }
+            position: relative;
       
+        }
+
+        .info {
+            // margin: .5rem 0 0 $gutter / 2;
+            position: absolute;
+            color: rgb(224, 61, 61);
+            bottom: -11%;
+            left: 3%;
+            font-size: 1.1rem;
+            opacity: 0; 
+      
+            &.fadeIn {
+                animation: fadeLeft 1s forwards;
+
+            }
+
+            &.fadeOut {
+                animation: fadeRight 1s forwards;
+            }
         }
 
     }

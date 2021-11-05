@@ -163,6 +163,21 @@ const initWeather = () => {
 
     }
 
+    const sendCitieResult = (citieResult) => {
+        const info = document.querySelector('.search-container .info')
+
+        info.innerHTML = `Por favor, insira uma cidade`
+
+        if (!citieResult) {
+            info.classList.add('fadeIn')
+            info.classList.remove('fadeOut')
+        } else {
+            info.classList.add('fadeOut')
+            info.classList.remove('fadeIn')
+        }
+
+    }
+
     const searchCitieWeather = () => {
         // getting the value of the user input and putting it as a lowercase word, to match with the city name of the api
         let cityNameInput = inputSearch.value.toLowerCase()
@@ -170,20 +185,25 @@ const initWeather = () => {
             // ALL https://rhuanbello-citylist.s3.sa-east-1.amazonaws.com/citylist.json
             // ALL but Minified https://rhuanbello-citylist.s3.sa-east-1.amazonaws.com/citylistminified.json
             // ONLY BR Countries JSON File =  https://rhuanbello-citylist.s3.sa-east-1.amazonaws.com/cities.json
-            fetch('https://rhuanbello-citylist.s3.sa-east-1.amazonaws.com/citylistminified.json')
+            fetch('https://rhuanbello-citylist.s3.sa-east-1.amazonaws.com/jsonminifier.json')
             .then(response => response.json())
             .then(list => {
-                list.forEach(citie => {
-                    if (citie.name.toLowerCase() === cityNameInput) {
-
-                        localStorage.setItem('lat', citie.coord.lat)
-                        localStorage.setItem('lon', citie.coord.lon)
-                        localStorage.setItem('citieName', citie.name)
-
-                        getWeatherByLocalStorage()
-
-                    }
+                const filteredArray = list.filter(citie => {
+                    return citie.name.toLowerCase() === cityNameInput
+            
                 })
+                const citieResult = filteredArray[filteredArray.length - 1]
+
+                
+
+                sendCitieResult(citieResult)
+
+                // Getting always the Last Result of Citie x Input Match
+                localStorage.setItem('lat', citieResult.coord.lat)
+                localStorage.setItem('lon', citieResult.coord.lon)
+                localStorage.setItem('citieName', citieResult.name)
+                
+                getWeatherByLocalStorage()
 
             })
     }
@@ -195,6 +215,8 @@ const initWeather = () => {
             sendInput.click()
         }
     });
+
+    // sendCitieResult()
 
     const getBackgroundQuerie = (query) => {
         const CLIENT_ID = 'zybzCr74o7PLZJ0bezMjlG1pEsH5Q_Vm4dqNKLBe254'
