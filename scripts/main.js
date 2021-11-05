@@ -118,14 +118,14 @@ const initWeather = () => {
     const sendInput = document.querySelector('.search-bar .search-btn.location')
 
     const API_KEY = 'e63937237298849235ab5f63a0eb5974'
-    const BASE_URL = 'https://api.openweathermap.org/data/2.5/onecall?'
+    const BASE_URL = 'https://api.openweathermap.org/data/2.5/'
 
     const getWeatherByLocalStorage = () => {
         let lat = localStorage.getItem('lat')
         let lon = localStorage.getItem('lon')
         let citieName = localStorage.getItem('citieName')
         
-        fetch(`${BASE_URL}lat=${lat}&lon=${lon}&exclude=hourly,minutely&units=metric&appid=${API_KEY}`)
+        fetch(`${BASE_URL}onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&units=metric&appid=${API_KEY}`)
         .then(response => response.json()).then(data => {
             showWeatherData(data)
             cityName.innerHTML = citieName
@@ -138,7 +138,7 @@ const initWeather = () => {
         
             let {latitude, longitude} = success.coords
 
-            fetch(`${BASE_URL}lat=${latitude}&lon=${longitude}&exclude=hourly,minutely&units=metric&appid=${API_KEY}`)
+            fetch(`${BASE_URL}onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely&units=metric&appid=${API_KEY}`)
             .then(response => response.json()).then(data => {
                 showWeatherData(data)
             })
@@ -146,7 +146,7 @@ const initWeather = () => {
         }, 
         // Default
         () => {
-            fetch(`${BASE_URL}lat=${-23.547501}&lon=${-46.636108}&exclude=hourly,minutely&units=metric&appid=${API_KEY}`)
+            fetch(`${BASE_URL}onecall?lat=${-23.547501}&lon=${-46.636108}&exclude=hourly,minutely&units=metric&appid=${API_KEY}`)
             .then(response => response.json()).then(data => {
                 showWeatherData(data)
             })
@@ -155,60 +155,51 @@ const initWeather = () => {
 
     }
 
-    if (localStorage.getItem('lat') && localStorage.getItem('lon')) {
-        getWeatherByLocalStorage()
-
-    } else {
-        getWeatherData()
-
-    }
-
-    const sendCitieResult = (citieResult) => {
-        const info = document.querySelector('.search-container .info')
-
-        info.innerHTML = `Por favor, insira uma cidade`
-
-        if (!citieResult) {
-            info.classList.add('fadeIn')
-            info.classList.remove('fadeOut')
+    // Caso Haja Dados no LocalStorage, carregue eles na página por padrão
+    const checkDataFromStorage = () => {
+        if (localStorage.getItem('lat') && localStorage.getItem('lon')) {
+            getWeatherByLocalStorage()
         } else {
-            info.classList.add('fadeOut')
-            info.classList.remove('fadeIn')
+            getWeatherData()
         }
 
     }
 
-    const searchCitieWeather = () => {
-        // getting the value of the user input and putting it as a lowercase word, to match with the city name of the api
-        let cityNameInput = inputSearch.value.toLowerCase()
-            
-            // ALL https://rhuanbello-citylist.s3.sa-east-1.amazonaws.com/citylist.json
-            // ALL but Minified https://rhuanbello-citylist.s3.sa-east-1.amazonaws.com/citylistminified.json
-            // ONLY BR Countries JSON File =  https://rhuanbello-citylist.s3.sa-east-1.amazonaws.com/cities.json
-            fetch('https://rhuanbello-citylist.s3.sa-east-1.amazonaws.com/jsonminifier.json')
-            .then(response => response.json())
-            .then(list => {
-                const filteredArray = list.filter(citie => {
-                    return citie.name.toLowerCase() === cityNameInput
-            
-                })
-                const citieResult = filteredArray[filteredArray.length - 1]
+    checkDataFromStorage()
 
-                
+    const getCoordinatesByCityName = () => {
+        let cityNameInput = inputSearch.value
 
-                sendCitieResult(citieResult)
-
-                // Getting always the Last Result of Citie x Input Match
-                localStorage.setItem('lat', citieResult.coord.lat)
-                localStorage.setItem('lon', citieResult.coord.lon)
-                localStorage.setItem('citieName', citieResult.name)
-                
-                getWeatherByLocalStorage()
-
-            })
+        fetch(`${BASE_URL}weather?q=${cityNameInput}&appid=${API_KEY}`)
+        .then(response => response.json())
+        .then(citieData => sendCitieResult(citieData))
     }
 
-    sendInput.addEventListener('click', searchCitieWeather);
+    const sendCitieResult = (citieData) => {
+        const info = document.querySelector('.search-container .info')
+
+        if (!citieData.message) {
+            
+            savingResult(citieData)
+            info.classList.add('fadeOut')
+            info.classList.remove('fadeIn')
+        } else {
+            info.innerHTML = `Por favor, insira uma cidade`
+            info.classList.add('fadeIn')
+            info.classList.remove('fadeOut')
+        }
+
+    }
+
+    const savingResult = (citie) => {
+        localStorage.setItem('lat', citie.coord.lat)
+        localStorage.setItem('lon', citie.coord.lon)
+        localStorage.setItem('citieName', citie.name)
+        getWeatherByLocalStorage()
+        
+    }
+
+    sendInput.addEventListener('click', getCoordinatesByCityName);
 
     document.addEventListener('keydown', (e) => {
         if(e.key === "Enter" && inputSearch.value) {
@@ -216,18 +207,20 @@ const initWeather = () => {
         }
     });
 
-    // sendCitieResult()
+    const sendRandomImage = (image) => {
+        const randomIndex = Math.floor(Math.random() * 5) 
+        const imgUrl = image.results[randomIndex].urls.regular
+
+        changeBackground(imgUrl)
+    }
 
     const getBackgroundQuerie = (query) => {
         const CLIENT_ID = 'zybzCr74o7PLZJ0bezMjlG1pEsH5Q_Vm4dqNKLBe254'
         const keyword = `${query} wallpaper`
-        const randomIndex = Math.floor(Math.random() * 5) 
 
         fetch(`https://api.unsplash.com/search/photos?query=${keyword}&order_by=relevant&page=1&orientation=landscape&client_id=${CLIENT_ID}`)
-        .then(response => response.json()).then(data => {
-            let imgUrl = data.results[randomIndex].urls.regular
-
-            changeBackground(imgUrl)
+        .then(response => response.json()).then(image => {
+            sendRandomImage(image)
         })
 
     }
@@ -241,9 +234,6 @@ const initWeather = () => {
 
     const showWeatherData = (data) => {
         let {humidity, wind_speed, weather, temp} = data.current 
-        console.log(data)
-       
-
         // Search Image by Weather Description
         // Setting The Weather Description of Current Data to LocalStorage
         localStorage.setItem('weatherDescription', weather[0].description)
@@ -314,15 +304,12 @@ const initWeather = () => {
 
                 `
 
-
             }
 
 
         })
 
         weatherForecast.innerHTML = otherDayForecast; 
-
-
         const openBoxForecast = () => {
             const box = document.querySelectorAll(".aside-forecast .weatherForecast .box")
             
@@ -341,4 +328,3 @@ const initWeather = () => {
 }
 
 initWeather()
-
