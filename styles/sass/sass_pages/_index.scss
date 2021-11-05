@@ -224,9 +224,10 @@
     align-items: center;
     gap: $gutter / 2;
     width: 100%;
-    background-color: rgba(0, 0, 0, .3);
+    background-color: rgba(0, 0, 0, .05);
     backdrop-filter: blur(2.5rem);
     animation: fadeBottom 1s forwards;
+    // overflow-x: scroll;
 
     &.down {
         animation: fadeTop 1.5s forwards;
@@ -237,6 +238,7 @@
         display: flex;
         gap: $gutter / 2;
         align-items: center;
+        padding: .5rem;
 
         marquee {
             width: 30rem;
@@ -252,23 +254,27 @@
 
     section {
         display: flex;
-        gap: $gutter;
+        gap: $gutter / 2;
 
         .box {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: $gutter;
-            background-color: $secondary-color;
-            border-radius: 2.5rem .5rem 0 0;
+            backdrop-filter: blur( .4rem );
+            border-radius: .5rem .5rem 0 0;
             font-family: 'DM Sans', sans-serif;
-            padding: 2rem;
+            padding: 2rem 3rem;
             position: relative;
             cursor: pointer;
             transition: .2s;
 
+            
+
             &:hover {
                 transform: scale(1.1);
+                background-color: rgba(47, 54, 61, .4);
+            
 
             }
 
@@ -283,27 +289,68 @@
 
             }
 
-            p {
-                &:first-child {
-                    font-size: 1.8rem;
-                    font-weight: 500;
-                }
-
-                &:last-child {
-                    font-size: 2.4rem;
-                    font-weight: 500;
-
-                }
-
+            & > p {
+                font-size: 1.8rem;
+                font-weight: 500;
+                color: $primary-color;
+            
             }
 
+            .container {
+                display: flex;
+                align-items: center;
+                gap: $gutter / 2;
+
+                .weather {
+                    p:first-child {
+                        font-size: 2.4rem;
+                        font-weight: 500;
+
+                    }
+                    p:last-child {
+                        font-size: 2.4rem;
+                        font-weight: 400;
+
+                    }
+
+                }
+
+                .content {
+                    display: flex;
+                    flex-direction: column;
+                    gap: $gutter / 4;
+                    margin-left: 1rem;
+                    display: none;
+
+                    .container {
+                        display: flex;
+                        align-items: center;
+
+                        img {
+                            width: 2rem;
+                        }
+
+                        span {
+                            font-size: 1.2rem;
+                            width: 6rem;
+                        }
+                    }
+                }
+            }
+
+            &:hover .container .content {
+                animation: fadeInSlowed 2s forwards;
+                display: flex;
+                
+            }
+
+        
             img {
-                width: 5rem;
+                width: 8rem;
 
             }
 
         }
-
 
     }
 

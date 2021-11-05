@@ -34,5 +34,5 @@ const loadingScreen = () => {
     fillBar()
 }
 
-loadingScreen()
+// loadingScreen()
 

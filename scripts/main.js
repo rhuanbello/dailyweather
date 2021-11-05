@@ -167,13 +167,15 @@ const initWeather = () => {
         // getting the value of the user input and putting it as a lowercase word, to match with the city name of the api
         let cityNameInput = inputSearch.value.toLowerCase()
             
+            // ALL https://rhuanbello-citylist.s3.sa-east-1.amazonaws.com/citylist.json
+            // ALL but Minified https://rhuanbello-citylist.s3.sa-east-1.amazonaws.com/citylistminified.json
             // ONLY BR Countries JSON File =  https://rhuanbello-citylist.s3.sa-east-1.amazonaws.com/cities.json
-            fetch('https://rhuanbello-citylist.s3.sa-east-1.amazonaws.com/citylist.json')
+            fetch('https://rhuanbello-citylist.s3.sa-east-1.amazonaws.com/citylistminified.json')
             .then(response => response.json())
             .then(list => {
                 list.forEach(citie => {
                     if (citie.name.toLowerCase() === cityNameInput) {
-                        
+
                         localStorage.setItem('lat', citie.coord.lat)
                         localStorage.setItem('lon', citie.coord.lon)
                         localStorage.setItem('citieName', citie.name)
@@ -184,7 +186,6 @@ const initWeather = () => {
                 })
 
             })
-    
     }
 
     sendInput.addEventListener('click', searchCitieWeather);
@@ -218,6 +219,8 @@ const initWeather = () => {
 
     const showWeatherData = (data) => {
         let {humidity, wind_speed, weather, temp} = data.current 
+        console.log(data)
+       
 
         // Search Image by Weather Description
         // Setting The Weather Description of Current Data to LocalStorage
@@ -263,18 +266,57 @@ const initWeather = () => {
                 otherDayForecast += 
                 `
                     <div class="box">
-                        <p>${window.moment(item.dt * 1000).locale('pt-BR').format('ddd, D [de] MMM')}</p>
-                        <img src="http://openweathermap.org/img/wn/${item.weather[0].icon}@4x.png" alt="">
-                        <p>${Math.round((item.temp.day))}°</p>
+                        <p>${window.moment(item.dt * 1000).locale('pt-br').format('ddd, D [de] MMM')}</p>
+                        <div class="container">
+                            <img src="http://openweathermap.org/img/wn/${item.weather[0].icon}@4x.png" alt="">
+                            <div class="weather">
+                                <p>${Math.round((item.temp.day))}°</p>
+                                <p>${Math.round((item.temp.night))}°</p> 
+                            </div>
+                            <div class="content">
+                                <div class="wind container">
+                                    <img src="assets/icons/wind-speed.svg" alt="wind-speed">
+                                    <span class="wind-speed">${item.wind_speed} mh/s</span>
+                                </div>
+                                <div class="humidity container">
+                                    <img src="assets/icons/humidity.svg" alt="humidity">
+                                    <span class="humidity">${item.humidity}%</span>
+                                </div>
+                                <div class="temperature container">
+                                <img src="assets/icons/weather.svg" alt="weather">
+                                <span class="temperature">${item.weather[0].main}</span>
+                            </div>
+                            </div>  
+                        </div>
                     </div>
 
                 `
+
+
             }
+
 
         })
 
         weatherForecast.innerHTML = otherDayForecast; 
+
+
+        const openBoxForecast = () => {
+            const box = document.querySelectorAll(".aside-forecast .weatherForecast .box")
+            
+            box.forEach(item => {
+                item.addEventListener('click', () => {
+                    item.querySelector('.content').classList.toggle('hidden')
+                })
+        
+            })
+        
+        }
+        
+        openBoxForecast()
+        
     }
 }
 
 initWeather()
+
