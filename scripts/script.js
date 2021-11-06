@@ -32,7 +32,7 @@ const loadingScreen = () => {
     fillBar()
 }
 
-// loadingScreen()
+loadingScreen()
 
 const initSearch = () => {
     const inputSearch = document.querySelector('.search-container .input-search')
