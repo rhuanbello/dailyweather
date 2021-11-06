@@ -190,13 +190,19 @@
         justify-content: flex-start;
         
     }
+
+    @include responsive(mobile) {
+        padding: 5.5rem .5rem;
+        
+    }
+
    
     .weather-forecast {
         display: flex;
         align-items: flex-end;
         gap: $gutter / 2;
         @include responsive(tablet) {
-            gap: $gutter;
+            gap: none;
             align-items: center;
             
         }
@@ -212,7 +218,7 @@
             }
 
             @include responsive(mobile) {
-                font-size: 7rem;
+                font-size: 6rem;
                 
             }
 
@@ -226,6 +232,11 @@
                 display: flex;
                 align-items: center;
                 gap: $gutter;
+
+                @include responsive(mobile) {
+                    gap: $gutter / 4;
+                    
+                }
 
                 .city-name {
                     font-size: 2.8rem;
@@ -269,11 +280,14 @@
             display: flex;
             gap: $gutter / 3;
             margin-top: .5rem;
+            flex-wrap: wrap;
 
             .container {
                 display: flex;
                 align-items: center;
                 gap: $gutter / 4;
+
+               
 
                 &:nth-child(4), &:last-child {
                     gap: .2rem;
