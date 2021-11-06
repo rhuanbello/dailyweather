@@ -22,7 +22,7 @@ Esse projeto foi desenvolvido com as seguintes ferramentas:
 - Vanilla JavaScript
 - Compilador SASS
 - Unsplash API
-- Open Weather API (One Call & Daily Call)
+- Open Weather API (One Call & Current Weather Data)
 - LocalStorage API
 - Moment.js
 
@@ -32,12 +32,12 @@ Esse projeto foi desenvolvido com as seguintes ferramentas:
 
 - **Início:** 25 de Outubro de 2021
     
-    ![Source: [WakaTime](https://wakatime.com/projects/dailyweather)](Daily%20Weather%209b05973e945a4782ad97aca9afc3e3ef/Untitled.png)
-    
-    Source: [WakaTime](https://wakatime.com/projects/dailyweather)
+    ![Source: [WakaTime](https://wakatime.com/projects/dailyweather)](https://i.imgur.com/MExIQ9A.png)
     
     [![wakatime](https://wakatime.com/badge/user/7c8afd8e-6490-43bb-b980-a081626d34af/project/19ea27d1-253e-4fdf-b371-70d2cf980076.svg)](https://wakatime.com/badge/user/7c8afd8e-6490-43bb-b980-a081626d34af/project/19ea27d1-253e-4fdf-b371-70d2cf980076)
     
+    Source: [WakaTime](https://wakatime.com/projects/dailyweather)
+
 
 ---
 
