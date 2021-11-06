@@ -401,10 +401,11 @@
         scroll-behavior: smooth;
         scroll-snap-type: x mandatory;
         padding: 1.5rem 0;
-        width: 95vw;
+        width: 100vw;
         
         @media (max-width: 1300px) {
             justify-content: flex-start;
+            width: 95vw;
             
 
         }
