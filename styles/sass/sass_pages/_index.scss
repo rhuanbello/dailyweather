@@ -5,6 +5,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: url('https://external-preview.redd.it/1cF1RegPa5GF0ikMOZ7YfN_g-GeirkmpRxSqbblCSsg.png?auto=webp&s=42af368cb2e0cf58d11c9ca0d9cbddee58a66cb5') no-repeat center center;
     transition: background-image 2s ease-in-out;
 
     &::after {
@@ -36,18 +37,47 @@
     align-items: center;
     animation: fadeIn 1.5s forwards;
 
+    @include responsive(tablet) {
+        width: 100%;
+
+        .logo-container {
+            img {
+                width: 18rem;
+            }
+
+        }
+    }
+
     .search-container {
         display: flex;
         flex-direction: column;
 
+        @include responsive(tablet) {
+            width: 100%;
+            
+        }
+
         .search-options {
             margin: $gutter / 2 0 .2rem $gutter / 2;
+
+            @include responsive(tablet) {
+                width: 75%;
+                margin-inline: auto;
+                
+            }
 
             a {
                 text-decoration: none;
                 font-size: 1.1rem;
                 cursor: pointer;
                 color: $grey-color;
+
+                @include responsive(tablet) {
+                    font-size: 1.3rem;
+                    
+
+                }
+    
 
                 &.active {
                     color: $light-color;
@@ -72,6 +102,14 @@
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(1.5rem);
             border-radius: 2.5rem;
+            width: 100%;
+
+            @include responsive(tablet) {
+                width: 80%;
+                margin: 0 auto;
+                position: relative;
+                
+            }
             
             input {
                 font-family: 'Poppins', sans-serif;
@@ -82,8 +120,10 @@
                 color: $light-color;
                 font-size: 1.4rem;
                 width: 45rem;
+                
                 caret-color: $primary-color;
                 cursor: $primary-color;
+
 
                 &::placeholder {
                     color: $grey-color;
@@ -103,13 +143,19 @@
         }
 
         .info {
-            // margin: .5rem 0 0 $gutter / 2;
             position: absolute;
-            color: rgb(224, 61, 61);
+            color: $primary-color;
             bottom: -11%;
             left: 3%;
             font-size: 1.1rem;
             opacity: 0; 
+
+            @include responsive(tablet) {
+                bottom: -9%;
+                left: 12%;
+                font-size: 1.3rem;
+
+            }
       
             &.fadeIn {
                 animation: fadeLeft 1s forwards;
@@ -133,17 +179,42 @@
     opacity: 0;
     display: flex;
     animation: fadeLeft 1s .8s forwards;
+    flex-wrap: wrap;
 
+    @include responsive(laptop) {
+        padding: 5.5rem 2rem;
+
+    }
+
+    @include responsive(tablet) {
+        justify-content: flex-start;
+        
+    }
+   
     .weather-forecast {
         display: flex;
         align-items: flex-end;
         gap: $gutter / 2;
+        @include responsive(tablet) {
+            gap: $gutter;
+            align-items: center;
+            
+        }
 
         .weather-temperature {
             font-family: 'Poppins', sans-serif;
             font-size: 9.6rem;
             font-weight: 300;
             line-height: .8;
+            @include responsive(tablet) {
+                align-items: center;
+                
+            }
+
+            @include responsive(mobile) {
+                font-size: 7rem;
+                
+            }
 
         }
 
@@ -160,22 +231,37 @@
                     font-size: 2.8rem;
                     font-weight: 400;
                     line-height: 1.3;
+
+                    @include responsive(mobile) {
+                        font-size: 2.5rem;
+                        line-height: 1.7;
+
+                    }
     
                 }
     
                 .date-container {
                     font-size: 1.6rem;
                     font-weight: 300;
+
+                    @include responsive(mobile) {
+                        font-size: 1.2rem;
+                        
+    
+                    }
                 }
 
                 .icon {
                     img {
                         width: 8rem;
+                        @include responsive(mobile) {
+                            width: 5rem;
+
+                        }
                     }
                 }
 
             }
-
 
         }
 
@@ -203,6 +289,12 @@
                     font-size: 1.2rem;
                     font-weight: 300;
 
+                    @include responsive(mobile) {
+                        font-size: 1.1rem;
+                        
+    
+                    }
+
                     
                 }
             }
@@ -214,8 +306,16 @@
         cursor: pointer;
         position: absolute;
         left: 50%;
-        bottom: 3rem;
+        bottom: 1.5rem;
         transform: translate(-50%);
+
+        @include responsive(laptop) {
+            bottom: .5rem;
+            img {
+                width: 3rem;
+            }
+        }
+    
 
     }
 
@@ -223,9 +323,21 @@
         display: flex;
         align-items: flex-end;
         gap: $gutter / 3;
+        
+        @include responsive(tablet) {
+            display: none;
+            
+        }
 
         a {
             width: 2rem;
+
+           img {
+                @include responsive(tablet) {
+                    width: 2rem;
+                    
+                }
+           }
 
             &:first-child {
                 margin-right: .5rem;
@@ -239,17 +351,17 @@
 
 .aside-forecast {
     margin-top: auto;
-    padding: 2rem 0;
+    padding: 1rem 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: $gutter / 2;
     width: 100%;
-    background-color: rgba(0, 0, 0, .05);
+    background-color: rgba(0, 0, 0, .2);
     backdrop-filter: blur(2.5rem);
     animation: fadeBottom 1s forwards;
-    // overflow-x: scroll;
-
+    
+    
     &.down {
         animation: fadeTop 1.5s forwards;
 
@@ -261,8 +373,16 @@
         align-items: center;
         padding: .5rem;
 
+        @include responsive(tablet) {
+            width: 90vw;
+            margin-inline: auto;
+
+        }
+
         marquee {
-            width: 30rem;
+            width: 50rem;
+
+            
 
             span {
                 color: $primary-color;
@@ -276,6 +396,18 @@
     section {
         display: flex;
         gap: $gutter / 2;
+        justify-content: center;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        scroll-snap-type: x mandatory;
+        padding: 1.5rem 0;
+        width: 95vw;
+        
+        @media (max-width: 1300px) {
+            justify-content: flex-start;
+            
+
+        }
 
         .box {
             display: flex;
@@ -285,18 +417,16 @@
             backdrop-filter: blur( .4rem );
             border-radius: .5rem .5rem 0 0;
             font-family: 'DM Sans', sans-serif;
-            padding: 2rem 3rem;
+            padding: 2rem 2.7rem;
             position: relative;
             cursor: pointer;
             transition: .2s;
-
-            
+            scroll-snap-align: start;
 
             &:hover {
                 transform: scale(1.1);
                 background-color: rgba(47, 54, 61, .4);
             
-
             }
 
             &::after {

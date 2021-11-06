@@ -1,20 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Weather</title>
+    <script defer src="scripts/script.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment-with-locales.min.js"></script>
-    <script defer type="module" src="scripts/script.js"></script>
-    <script defer src="scripts/main.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="styles/css/style.css">
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
-    <title>Daily Weather</title>
 </head>
 <body>
 
-    <main class="main-loading">
+    <aside class="main-loading hidden">
 
         <section>
             <img src="assets/logo.png" alt="logo">
@@ -22,12 +21,12 @@
         </section>
 
         <footer>
-            <a href="https://www.rhuanbello.com" target="_blank">Orgulhosamente Desenvolvido por <span>Rhuan Bello</span></a>
+            <a href="https://www.rhuanbello.com" target="_blank" rel="noreferrer">Orgulhosamente Desenvolvido por <span>Rhuan Bello</span></a>
         </footer>
 
-    </main>
+    </aside>
 
-    <main class="main-home">
+    <main class="main-home ">
 
         <section class="section-search">
 
@@ -46,11 +45,11 @@
                 <form class="search-bar">
                     <input class="input-location hidden" type="text" placeholder="Localização...">
                     <input class="input-search" type="text" placeholder="Fazer uma pesquisa...">
-                    <a href="" class="search-btn term">
-                        <img src="assets/icons/search.svg" alt="" class="search-icon">
+                    <a href="" class="search-btn term" rel="noreferrer">
+                        <img src="assets/icons/search.svg" alt="search" class="search-icon">
                     </a>
                     <a class="search-btn location hidden">
-                        <img src="assets/icons/search.svg" alt="" class="search-icon">
+                        <img src="assets/icons/search.svg" alt="search" class="search-icon">
                     </a>
                 </form>
 
@@ -87,16 +86,16 @@
             </div>
 
             <div class="social-media">
-                <a href="https://www.youtube.com/" target="_blank">
+                <a href="https://www.youtube.com/" target="_blank" rel="noreferrer">
                     <img src="assets/icons/youtube.png" alt="youtube">
                 </a>
-                <a href="https://twitter.com/home" target="_blank">
+                <a href="https://twitter.com/home" target="_blank" rel="noreferrer">
                     <img src="assets/icons/twitter.png" alt="twitter">
                 </a>
-                <a href="https://www.facebook.com/" target="_blank">
+                <a href="https://www.facebook.com/" target="_blank" rel="noreferrer">
                     <img src="assets/icons/facebook.png" alt="facebook">
                 </a>
-                <a href="https://www.instagram.com/" target="_blank">
+                <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
                     <img src="assets/icons/instagram.png" alt="instagram">
                 </a>
             </div>
@@ -106,7 +105,7 @@
         <aside class="aside-forecast hidden">
 
             <header>
-                <img src="assets/icons/alert-triangle.svg" alt="">
+                <img src="assets/icons/alert-triangle.svg" alt="alert-triangle">
                 <marquee behavior="" direction="left">
                     <p><span>Instituto Nacional de Meteorologia:</span> INMET publica aviso iniciando em: 02/11/2021 10:10. Chuva entre 20 e 30 mm/h ou até 50 mm/dia, ventos intensos (40-60 km/h). Baixo risco de corte de energia elétrica, queda de galhos de árvores, alagamentos e de descargas elétricas.</p>
                 </marquee>
@@ -117,7 +116,7 @@
 
             <footer>
                 <div class="close-aside">
-                    <img src="assets/icons/arrow-down.svg" alt="" class="">
+                    <img src="assets/icons/arrow-down.svg" alt="close-aside">
                 </div>
             </footer>
 

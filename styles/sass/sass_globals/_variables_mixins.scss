@@ -4,3 +4,29 @@ $grey-color: #BABABA;
 $light-color: #F9F9F9;
 $dark-color: #13131F;
 $gutter: 2.5rem;
+
+@mixin responsive($device) {  
+
+    @if $device == mobile {
+        @media (max-width: 500px) {
+            @content;
+            
+        }
+
+    } @else if $device == tablet {
+        
+        @media (max-width: 615px) {
+            @content;
+
+        }
+
+    } @else if $device == laptop {
+
+        @media (max-width: 1050px) {
+            @content;
+
+        }
+        
+    }
+
+}

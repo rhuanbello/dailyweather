@@ -32,7 +32,7 @@ const loadingScreen = () => {
     fillBar()
 }
 
-loadingScreen()
+// loadingScreen()
 
 const initSearch = () => {
     const inputSearch = document.querySelector('.search-container .input-search')
@@ -180,11 +180,12 @@ const initWeather = () => {
             })
 
         }, 
-        // Default
+        // Default (caso usuário bloqueie o acesso à localização em sua primeira visita)
         () => {
-            fetch(`${BASE_URL}onecall?lat=${-23.547501}&lon=${-46.636108}&exclude=hourly,minutely&units=metric&appid=${API_KEY}`)
+            fetch(`${BASE_URL}onecall?lat=${-22.9028}&lon=${-43.2075}&exclude=hourly,minutely&units=metric&appid=${API_KEY}`)
             .then(response => response.json()).then(data => {
                 showWeatherData(data)
+                cityName.innerHTML = 'Rio de Janeiro'
             })
 
         })
@@ -270,6 +271,7 @@ const initWeather = () => {
 
     const showWeatherData = (data) => {
         let {humidity, wind_speed, weather, temp} = data.current 
+        
         // Search Image by Weather Description
         // Setting The Weather Description of Current Data to LocalStorage
         localStorage.setItem('weatherDescription', weather[0].description)
@@ -331,9 +333,9 @@ const initWeather = () => {
                                     <span class="humidity">${item.humidity}%</span>
                                 </div>
                                 <div class="temperature container">
-                                <img src="assets/icons/weather.svg" alt="weather">
-                                <span class="temperature">${item.weather[0].main}</span>
-                            </div>
+                                    <img src="assets/icons/weather.svg" alt="weather">
+                                    <span class="temperature">${item.weather[0].main}</span>
+                                </div>
                             </div>  
                         </div>
                     </div>
@@ -349,6 +351,7 @@ const initWeather = () => {
         const openBoxForecast = () => {
             const box = document.querySelectorAll(".aside-forecast .weatherForecast .box")
             
+            // For Mobile Users, Hovering the box must be difficult, so I garantee it can be done with the click too
             box.forEach(item => {
                 item.addEventListener('click', () => {
                     item.querySelector('.content').classList.toggle('hidden')
